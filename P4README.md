@@ -1,1 +1,26 @@
-<img width="412" height="447" alt="image" src="https://github.com/user-attachments/assets/37ce0526-e35d-4f28-8ab4-17c5c63f8945" />
+#include <iostream>
+using namespace std;
+
+class Calculator
+{
+public:
+    void calculate(int a, int b)
+    {
+        cout << "Addition = " << a + b << endl;
+    }
+
+    void calculate(double a, double b)
+    {
+        cout << "Subtraction = " << a - b << endl;
+    }
+};
+
+int main()
+{
+    Calculator c;
+
+    c.calculate(10, 5);
+    c.calculate(10.5, 5.5);    
+
+    return 0;
+}
