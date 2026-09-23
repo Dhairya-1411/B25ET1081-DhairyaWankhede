@@ -1,0 +1,62 @@
+#include <iostream>
+using namespace std;
+
+// Class for complex numbers
+class Complex
+{
+    float real, imag;
+
+public:
+
+    // Constructor
+    Complex(float r = 0, float i = 0)
+    {
+        real = r;
+        imag = i;
+    }
+
+    // Overload / operator
+    Complex operator/(Complex c)
+    {
+        // Calculate the denominator
+        float d = c.real * c.real + c.imag * c.imag;
+
+        // Check if denominator is zero
+        if (d == 0)
+        {
+            cout << "Cannot divide by zero!";
+            return Complex();
+        }
+
+        // Calculate real part
+        float r = (real * c.real + imag * c.imag) / d;
+
+        // Calculate imaginary part
+        float i = (imag * c.real - real * c.imag) / d;
+
+        // Return the result
+        return Complex(r, i);
+    }
+
+    // Display the complex number
+    void display()
+    {
+        cout << real << " + " << imag << "i" << endl;
+    }
+};
+
+int main()
+{
+    // Create two complex numbers
+    Complex c1(4, 3);
+    Complex c2(2, 1);
+
+    // Divide two complex numbers
+    Complex c3 = c1 / c2;
+
+    // Display the result
+    cout << "Result = ";
+    c3.display();
+
+    return 0;
+}
