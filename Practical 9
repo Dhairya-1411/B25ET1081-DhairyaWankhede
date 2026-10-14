@@ -1,0 +1,59 @@
+#include <iostream>
+using namespace std;
+
+// Base class
+class Account
+{
+public:
+    // Virtual function
+    virtual void calculateReturns()
+    {
+        cout << "Calculating account returns" << endl;
+    }
+};
+
+// Derived class Savings
+class Savings : public Account
+{
+public:
+    void calculateReturns() override
+    {
+        float p = 10000, r = 4, t = 1;
+        float interest = (p * r * t) / 100;
+
+        cout << "Savings Account Returns: "
+             << interest << endl;
+    }
+};
+
+// Derived class FixedDeposit
+class FixedDeposit : public Account
+{
+public:
+    void calculateReturns() override
+    {
+        float p = 10000, r = 7, t = 1;
+        float interest = (p * r * t) / 100;
+
+        cout << "Fixed Deposit Returns: "
+             << interest << endl;
+    }
+};
+
+int main()
+{
+    // Base class pointer
+    Account *acc;
+
+    // Point to Savings object
+    Savings s;
+    acc = &s;
+    acc->calculateReturns();
+
+    // Point to FixedDeposit object
+    FixedDeposit f;
+    acc = &f;
+    acc->calculateReturns();
+
+    return 0;
+}
