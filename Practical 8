@@ -1,0 +1,72 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+// Base class for employee basic information
+class Employee
+{
+protected:
+    int id;
+    string name;
+
+public:
+    // Accept employee details
+    void getBasic()
+    {
+        cout << "Enter Employee ID: ";
+        cin >> id;
+        cout << "Enter Employee Name: ";
+        cin >> name;
+    }
+};
+
+// Base class for salary information
+class Salary
+{
+protected:
+    float basic, hra, da, deductions;
+
+public:
+    // Accept salary details
+    void getSalary()
+    {
+        cout << "Enter Basic Salary: ";
+        cin >> basic;
+        cout << "Enter HRA: ";
+        cin >> hra;
+        cout << "Enter DA: ";
+        cin >> da;
+        cout << "Enter Deductions: ";
+        cin >> deductions;
+    }
+};
+
+// Derived class inheriting from both base classes
+class NetSalary : public Employee, public Salary
+{
+public:
+    // Calculate and display net salary
+    void calculate()
+    {
+        float gross = basic + hra + da;
+        float net = gross - deductions;
+
+        cout << "\nEmployee ID: " << id;
+        cout << "\nEmployee Name: " << name;
+        cout << "\nGross Salary: " << gross;
+        cout << "\nNet Salary: " << net << endl;
+    }
+};
+
+int main()
+{
+    // Create object of derived class
+    NetSalary e;
+
+    // Call functions to accept and calculate details
+    e.getBasic();
+    e.getSalary();
+    e.calculate();
+
+    return 0;
+}
