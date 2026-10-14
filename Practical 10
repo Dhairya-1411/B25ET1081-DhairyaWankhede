@@ -1,0 +1,35 @@
+#include <iostream>
+#include <stdexcept>
+using namespace std;
+
+int main()
+{
+    int a, b;
+
+    cout << "Enter two numbers: ";
+    cin >> a >> b;
+
+    try
+    {
+        // Check for division by zero
+        if (b == 0)
+            throw runtime_error("Division by zero!");
+
+        // Perform division
+        cout << "Result: " << (float)a / b << endl;
+    }
+    catch (runtime_error &e)
+    {
+        cout << "Runtime Error: " << e.what() << endl;
+    }
+    catch (int e)
+    {
+        cout << "Integer Exception: " << e << endl;
+    }
+    catch (...)
+    {
+        cout << "Unknown exception occurred!" << endl;
+    }
+
+    return 0;
+}
