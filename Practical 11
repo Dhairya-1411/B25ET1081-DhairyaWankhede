@@ -1,0 +1,41 @@
+
+#include <iostream>
+using namespace std;
+
+// Class Template
+template <class T>
+class Demo {
+    T a, b;
+
+public:
+    Demo(T x, T y) {
+        a = x;
+        b = y;
+    }
+
+    void display() {
+        cout << "Sum using Class Template: " << a + b << endl;
+    }
+};
+
+// Function Template
+template <class T>
+T maximum(T a, T b) {
+    if (a > b)
+        return a;
+    else
+        return b;
+}
+
+int main() {
+    Demo<int> d1(10, 20);
+    d1.display();
+
+    cout << "Maximum using Function Template: "
+         << maximum<int>(10, 20) << endl;
+
+    cout << "Maximum of decimal numbers: "
+         << maximum<double>(5.5, 3.2) << endl;
+
+    return 0;
+}
